@@ -1,0 +1,7 @@
+<h1>Event Log Form</h1>
+
+<%= form_with url: log_form_path do |form| %>
+    <%= form.text_area :event_log, size: "70x5", placeholder: "Enter event log data" %>
+    <br />
+    <%= form.submit value: "Parse" %>
+<% end %>

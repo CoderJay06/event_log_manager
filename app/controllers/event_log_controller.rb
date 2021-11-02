@@ -1,0 +1,2 @@
+class EventLogController < ApplicationController
+end
