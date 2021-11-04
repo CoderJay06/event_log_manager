@@ -1,26 +1,19 @@
 class CommentsController < ApplicationController
 
     def new
-        @event_log = EventLog.find(params[event_log_id])
-        @comment = @event_log.comments.new(parent_id: params[:parent_id])
+       @comment = Comment.new
     end
 
     def create
-        byebug
         @event_log = EventLog.find(params[:event_log_id])
-        @comment = @event_log.comments.new(comments_params)
+        @comment = @event_log.comments.create(comments_params)
 
-        respond_to do |f|
-            if @comment.save
-                f.html { redirect_to @event_log }
-            end
-        end
-
-        redirect_to root_path
+        redirect_to "/event_logs"
     end
 
     def destroy
-        comment = Comment.find(params[:id])
+        event_log = EventLog.find(params[:event_log_id])
+        comment = event_log.comments.find(params[:id])
         comment.destroy
         redirect_to '/event_logs'
     end
