@@ -25,3 +25,7 @@ input[type=submit]:hover {
 a {
     font-size: larger;
 }
+
+.event-log-form, .event-logs {
+    margin-top: 5em;
+}
