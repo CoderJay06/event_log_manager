@@ -1,6 +1,7 @@
 class EventLogsController < ApplicationController
     def index
-        @event_logs = EventLog.all
+        event_logs = EventLog.order(created_at: :desc).all
+        @parsed_event_logs = EventLog.parseAll(event_logs)
     end
 
     def new
@@ -9,8 +10,8 @@ class EventLogsController < ApplicationController
 
     def create
         @event_log = EventLog.new(event_log_params)
+
         if @event_log.save
-            # redirect_to "/event_logs/#{@event_log.id}"
             redirect_to '/event_logs'
         else
             render 'new'
@@ -22,6 +23,10 @@ class EventLogsController < ApplicationController
     end
 
     def destroy
+        event_log = EventLog.find(params[:id])
+        event_log.destroy
+
+        redirect_to '/event_logs'
     end
 
     private

@@ -1,6 +1,11 @@
 <div class="event-logs">
-    <% @event_logs.each do |event| %>
-        <p><%= event.data %></p>
-        <hr>
+    <% @parsed_event_logs.each do |event| %>
+        <% if event[:log].id %>
+            <h4>Event <%= event[:log].id %></h4>
+            <p>Source IP: <%= event[:parsed_data][1][4..] %></p>
+            <p>Destination IP: <%= event[:parsed_data][0][4..] %></p>
+            <%= button_to "Delete", event_log_path(event[:log]), method: :delete %>
+            <hr>
+        <% end %>
     <% end %>
 </div>
