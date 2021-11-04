@@ -1,4 +1,10 @@
 <div class="event-logs">
+    <%= link_to "New event log", new_event_log_path %>
+    <% if @parsed_event_logs.size > 0 %>
+        <h1>Parsed Event Logs</h1>
+    <% else %>
+        <h1>You have no event logs yet</h1>
+    <% end %>
     <% @parsed_event_logs.each do |event| %>
         <% if event[:log].id %>
             <h4>Event <%= event[:log].id %></h4>
