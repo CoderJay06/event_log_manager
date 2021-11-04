@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'home/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get "log_form", to: "log_form#new"
+  # get "event_logs", to: "event_logs#new"
+  resources :event_logs
 
-  root to: "home#index"
+  root "home#index"
 end

@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+body {
+    margin: 0 auto;
+    text-align: center;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
