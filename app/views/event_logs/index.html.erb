@@ -18,9 +18,7 @@
                   <%= f.submit "Add" %>
                <% end %>
                <div class="comments">
-               <% event[:log].comments.each do |c| %>
-                  <p><%= c.body %></p>
-               <% end %>
+                  <%= render event[:log].comments %>
                </div>
             </div>
             <br />

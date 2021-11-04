@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        event_log = EventLog.find(params[:event_log_id])
-        comment = event_log.comments.find(params[:id])
+        comment = Comment.find(params[:id])
+        event_log = EventLog.find(comment.event_log_id)
         comment.destroy
-        redirect_to '/event_logs'
+        redirect_to "/event_logs"
     end
     
     private

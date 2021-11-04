@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # get "event_logs", to: "event_logs#new"
   delete 'event_logs/:id', to: 'event_logs#destroy'
+  delete 'event_logs/:id/comments/:id', to: 'comments#destroy'
 
   resources :event_logs do 
     resources :comments
