@@ -1,0 +1,6 @@
+<div class="posted-comments">
+    <%= comment.body %>
+    <% if comment.body %>
+        <%= button_to "X", [comment.event_log, comment], method: :delete %>
+    <% end %>
+</div>

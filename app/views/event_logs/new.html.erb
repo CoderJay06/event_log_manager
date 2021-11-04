@@ -1,6 +1,7 @@
 <div class="event-log-form">
     <%= link_to "Event logs", event_logs_path %>
     <h1>Event Log Form</h1>
+
     <%= form_for(@event_log) do |form| %>
         <%= form.text_area :data, size: "70x5", placeholder: "Enter event log data" %>
         <br />

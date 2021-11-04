@@ -1,4 +1,6 @@
 class EventLog < ApplicationRecord
+    has_many :comments, dependent: :destroy
+    accepts_nested_attributes_for :comments
 
     def self.parse(event_log)
         # byebug
