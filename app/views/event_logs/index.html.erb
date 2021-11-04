@@ -10,7 +10,21 @@
             <h4>Event <%= event[:log].id %></h4>
             <p>Source IP: <%= event[:parsed_data][1][4..] %></p>
             <p>Destination IP: <%= event[:parsed_data][0][4..] %></p>
-            <%= button_to "Delete", event_log_path(event[:log]), method: :delete %>
+            <div class="comment-form">
+               <%= form_with(model: [event[:log], event[:log].comments.build]) do |f| %>
+                  <%= f.hidden_field :parent_id %>
+                  <%= f.text_area :body, placeholder: "Add comment" %>
+                  <br />
+                  <%= f.submit "Add" %>
+               <% end %>
+               <div class="comments">
+               <% event[:log].comments.each do |c| %>
+                  <p><%= c.body %></p>
+               <% end %>
+               </div>
+            </div>
+            <br />
+            <%= button_to "Delete event log", event_log_path(event[:log]), method: :delete %>
             <hr>
         <% end %>
     <% end %>
